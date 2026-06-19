@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "North Georgia Vida Nueva",
+    "abbr": "NGVN",
+    "headcount": 120,
+    "budget": 3500.00,
+    "exportEmail": "kitchen@ngvn.org",
+    "recipesUrl": "",
+    "days": [
+      {
+        "dayNumber": 1,
+        "meals": [
+          { "mealType": "Dinner", "potluckEligible": true }
+        ]
+      },
+      {
+        "dayNumber": 2,
+        "meals": [
+          { "mealType": "Breakfast", "potluckEligible": false },
+          { "mealType": "Lunch", "potluckEligible": false },
+          { "mealType": "Dinner", "potluckEligible": false }
+        ]
+      },
+      {
+        "dayNumber": 3,
+        "meals": [
+          { "mealType": "Breakfast", "potluckEligible": false },
+          { "mealType": "Lunch", "potluckEligible": false }
+        ]
+      }
+    ]
+  }
+]

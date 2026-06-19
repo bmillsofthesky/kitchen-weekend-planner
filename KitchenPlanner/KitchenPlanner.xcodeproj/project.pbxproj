@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16FE29166A7D915B0133EC46 /* RecipeSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D040B629C218859F8D467B41 /* RecipeSyncService.swift */; };
+		22C4A8F776FF26A34DAF8860 /* KitchenPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4B5AA814A4219A7F363B9 /* KitchenPlannerApp.swift */; };
+		28B04C2F58D31FF627C80509 /* LoadPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A71C18F99150C5F66C1783 /* LoadPlanView.swift */; };
+		2BF442D9983C4DF886A76F8E /* ThemeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A0D670560330EC977D225 /* ThemeTab.swift */; };
+		3089095A8A1143D6169CC304 /* PlanFileImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59BCAE1EE3D411AAD90D80 /* PlanFileImportView.swift */; };
+		3CB0C4CACB06F649E468B948 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3368FCD85D69B26314F09C93 /* Recipe.swift */; };
+		5177C3AEBBD1769108A2E449 /* movements.json in Resources */ = {isa = PBXBuildFile; fileRef = 35C0C09389E134F778AD4EE7 /* movements.json */; };
+		54849869F5FE3B4A27816ED8 /* BudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */; };
+		5F4369C10026A0B3C66274A8 /* BudgetProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */; };
+		7ACF49C49590778F35CF6AAE /* RecipeFileImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B7D38EAC2918F4158E125 /* RecipeFileImportView.swift */; };
+		80065F14C90E3D6F98407710 /* NewPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3E195BCCFCF30EF7DC1A0 /* NewPlanFormView.swift */; };
+		8138329278933F01CFBD373C /* RecipeLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5315D5CE5338CC1F2EFEEF86 /* RecipeLibraryView.swift */; };
+		824872509FFD386C2C9C358A /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB1B1295F4022C6BF2DE724 /* Theme.swift */; };
+		876CD34AEA78AABAA3642FEB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE2FC9EFAFE3A39B390297 /* SettingsView.swift */; };
+		9849B9EFD389D809F047A190 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E79CC9B2F19E1A28B85EC0 /* RecipeDetailView.swift */; };
+		A527949A2ABC123DA759E1CB /* RecipeScraperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49459AE7D72B109AD061A861 /* RecipeScraperService.swift */; };
+		B36E668B389CC89D7B6C1F38 /* MovementConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4852EE02294CB62AF09EFF56 /* MovementConfiguration.swift */; };
+		C35711B938F410351067EA1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55678C87C25DB710B4339B67 /* ContentView.swift */; };
+		C6A71ECE8A55DB6CFA4B8460 /* ConfigurationSeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E67BB8FD83CBC690629302 /* ConfigurationSeeder.swift */; };
+		C8A1F9CC0584ACD5BB2239F2 /* WeekendPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D99DEF7DA57A5A94E60337 /* WeekendPlan.swift */; };
+		C950604FB013AF9BD8DDFCAB /* PlanExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07157DFED11AB7C177C131C /* PlanExporter.swift */; };
+		D1B020D03CBD8E0B85488814 /* PlanOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E8AF7FC6BCB0CEA63698F /* PlanOverviewView.swift */; };
+		DA7E481F33F20B32EA419005 /* RecipeURLImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7B6013FBD1555CE2649AD /* RecipeURLImportView.swift */; };
+		E129144F7FF49184979579A5 /* ManualRecipeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C6EDF8CDFA9CEE998BCF7 /* ManualRecipeFormView.swift */; };
+		E3E95497B2725A0AC33F0896 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5FD238D9DFCDEACE16EF27 /* MealView.swift */; };
+		F35BDC69B03E9FAA4A9E98D3 /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44408F55FA51D754F394C4C6 /* StartupView.swift */; };
+		F4B3653DC87AE85D8E29A7AD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35475A6B7F842D2DFB57E /* MainTabView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		05E67BB8FD83CBC690629302 /* ConfigurationSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSeeder.swift; sourceTree = "<group>"; };
+		1BB7B6013FBD1555CE2649AD /* RecipeURLImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeURLImportView.swift; sourceTree = "<group>"; };
+		2B0C6EDF8CDFA9CEE998BCF7 /* ManualRecipeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualRecipeFormView.swift; sourceTree = "<group>"; };
+		32AEB851F6198FEB6826A499 /* KitchenPlanner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = KitchenPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		333B7D38EAC2918F4158E125 /* RecipeFileImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFileImportView.swift; sourceTree = "<group>"; };
+		3368FCD85D69B26314F09C93 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		35C0C09389E134F778AD4EE7 /* movements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movements.json; sourceTree = "<group>"; };
+		3E0A0D670560330EC977D225 /* ThemeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTab.swift; sourceTree = "<group>"; };
+		41A3E195BCCFCF30EF7DC1A0 /* NewPlanFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanFormView.swift; sourceTree = "<group>"; };
+		43E79CC9B2F19E1A28B85EC0 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		44408F55FA51D754F394C4C6 /* StartupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupView.swift; sourceTree = "<group>"; };
+		4852EE02294CB62AF09EFF56 /* MovementConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementConfiguration.swift; sourceTree = "<group>"; };
+		49459AE7D72B109AD061A861 /* RecipeScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScraperService.swift; sourceTree = "<group>"; };
+		4BB1B1295F4022C6BF2DE724 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressBar.swift; sourceTree = "<group>"; };
+		5315D5CE5338CC1F2EFEEF86 /* RecipeLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibraryView.swift; sourceTree = "<group>"; };
+		55678C87C25DB710B4339B67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculator.swift; sourceTree = "<group>"; };
+		5B5FD238D9DFCDEACE16EF27 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
+		7BE4B5AA814A4219A7F363B9 /* KitchenPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenPlannerApp.swift; sourceTree = "<group>"; };
+		7CF4064D317C1BAA97B0C769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7F59BCAE1EE3D411AAD90D80 /* PlanFileImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFileImportView.swift; sourceTree = "<group>"; };
+		86A71C18F99150C5F66C1783 /* LoadPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPlanView.swift; sourceTree = "<group>"; };
+		B2A35475A6B7F842D2DFB57E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		B2D99DEF7DA57A5A94E60337 /* WeekendPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekendPlan.swift; sourceTree = "<group>"; };
+		BAEE2FC9EFAFE3A39B390297 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D040B629C218859F8D467B41 /* RecipeSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSyncService.swift; sourceTree = "<group>"; };
+		D99E8AF7FC6BCB0CEA63698F /* PlanOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOverviewView.swift; sourceTree = "<group>"; };
+		E91CB4F88BE467E88E5B2EB4 /* KitchenPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KitchenPlanner.entitlements; sourceTree = "<group>"; };
+		F07157DFED11AB7C177C131C /* PlanExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanExporter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0E04EC58132AE51A8A3ACC63 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				BAEE2FC9EFAFE3A39B390297 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		209BA1B6A7D541CF48BB8A68 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4852EE02294CB62AF09EFF56 /* MovementConfiguration.swift */,
+				3368FCD85D69B26314F09C93 /* Recipe.swift */,
+				4BB1B1295F4022C6BF2DE724 /* Theme.swift */,
+				B2D99DEF7DA57A5A94E60337 /* WeekendPlan.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		396BEAF8DC6CB9C3A9058A3E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				55678C87C25DB710B4339B67 /* ContentView.swift */,
+				B2A35475A6B7F842D2DFB57E /* MainTabView.swift */,
+				A62BC6E7A0E235FC636E1CAB /* Components */,
+				3F555BB7108EE4FE9BD7C9D3 /* MealPlanning */,
+				D863AF9639A61C7E203F97BF /* Plan */,
+				8C14858C5E46FAB96C91E9BD /* Recipes */,
+				0E04EC58132AE51A8A3ACC63 /* Settings */,
+				47FE26F7272E0934345A764E /* Startup */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3F555BB7108EE4FE9BD7C9D3 /* MealPlanning */ = {
+			isa = PBXGroup;
+			children = (
+				5B5FD238D9DFCDEACE16EF27 /* MealView.swift */,
+				3E0A0D670560330EC977D225 /* ThemeTab.swift */,
+			);
+			path = MealPlanning;
+			sourceTree = "<group>";
+		};
+		47FE26F7272E0934345A764E /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				86A71C18F99150C5F66C1783 /* LoadPlanView.swift */,
+				41A3E195BCCFCF30EF7DC1A0 /* NewPlanFormView.swift */,
+				7F59BCAE1EE3D411AAD90D80 /* PlanFileImportView.swift */,
+				44408F55FA51D754F394C4C6 /* StartupView.swift */,
+			);
+			path = Startup;
+			sourceTree = "<group>";
+		};
+		5815FF23DF32143902B105B1 = {
+			isa = PBXGroup;
+			children = (
+				FA1EA977DF9E028D4E738EC4 /* Sources */,
+				C6EDA01B60F3A57E33378200 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8C14858C5E46FAB96C91E9BD /* Recipes */ = {
+			isa = PBXGroup;
+			children = (
+				2B0C6EDF8CDFA9CEE998BCF7 /* ManualRecipeFormView.swift */,
+				43E79CC9B2F19E1A28B85EC0 /* RecipeDetailView.swift */,
+				333B7D38EAC2918F4158E125 /* RecipeFileImportView.swift */,
+				5315D5CE5338CC1F2EFEEF86 /* RecipeLibraryView.swift */,
+				1BB7B6013FBD1555CE2649AD /* RecipeURLImportView.swift */,
+			);
+			path = Recipes;
+			sourceTree = "<group>";
+		};
+		A4ABAB4F5F15DADA3D806175 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */,
+				05E67BB8FD83CBC690629302 /* ConfigurationSeeder.swift */,
+				F07157DFED11AB7C177C131C /* PlanExporter.swift */,
+				49459AE7D72B109AD061A861 /* RecipeScraperService.swift */,
+				D040B629C218859F8D467B41 /* RecipeSyncService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A62BC6E7A0E235FC636E1CAB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C6EDA01B60F3A57E33378200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32AEB851F6198FEB6826A499 /* KitchenPlanner.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D863AF9639A61C7E203F97BF /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				D99E8AF7FC6BCB0CEA63698F /* PlanOverviewView.swift */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		FA1EA977DF9E028D4E738EC4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				7CF4064D317C1BAA97B0C769 /* Info.plist */,
+				E91CB4F88BE467E88E5B2EB4 /* KitchenPlanner.entitlements */,
+				7BE4B5AA814A4219A7F363B9 /* KitchenPlannerApp.swift */,
+				35C0C09389E134F778AD4EE7 /* movements.json */,
+				209BA1B6A7D541CF48BB8A68 /* Models */,
+				A4ABAB4F5F15DADA3D806175 /* Services */,
+				396BEAF8DC6CB9C3A9058A3E /* Views */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9FE6A478C4ABD88AB4E368E0 /* KitchenPlanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 245DC3FF49CA5CB70A7EC11C /* Build configuration list for PBXNativeTarget "KitchenPlanner" */;
+			buildPhases = (
+				1C62E04EEC7175B74FB4E03E /* Sources */,
+				34E6B8BF86649850E834EC04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KitchenPlanner;
+			packageProductDependencies = (
+			);
+			productName = KitchenPlanner;
+			productReference = 32AEB851F6198FEB6826A499 /* KitchenPlanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		05A3953F5215F5C8DFBE6DE2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = 358E038A65D984656C6BD21B /* Build configuration list for PBXProject "KitchenPlanner" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5815FF23DF32143902B105B1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = C6EDA01B60F3A57E33378200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9FE6A478C4ABD88AB4E368E0 /* KitchenPlanner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34E6B8BF86649850E834EC04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5177C3AEBBD1769108A2E449 /* movements.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1C62E04EEC7175B74FB4E03E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54849869F5FE3B4A27816ED8 /* BudgetCalculator.swift in Sources */,
+				5F4369C10026A0B3C66274A8 /* BudgetProgressBar.swift in Sources */,
+				C6A71ECE8A55DB6CFA4B8460 /* ConfigurationSeeder.swift in Sources */,
+				C35711B938F410351067EA1C /* ContentView.swift in Sources */,
+				22C4A8F776FF26A34DAF8860 /* KitchenPlannerApp.swift in Sources */,
+				28B04C2F58D31FF627C80509 /* LoadPlanView.swift in Sources */,
+				F4B3653DC87AE85D8E29A7AD /* MainTabView.swift in Sources */,
+				E129144F7FF49184979579A5 /* ManualRecipeFormView.swift in Sources */,
+				E3E95497B2725A0AC33F0896 /* MealView.swift in Sources */,
+				B36E668B389CC89D7B6C1F38 /* MovementConfiguration.swift in Sources */,
+				80065F14C90E3D6F98407710 /* NewPlanFormView.swift in Sources */,
+				C950604FB013AF9BD8DDFCAB /* PlanExporter.swift in Sources */,
+				3089095A8A1143D6169CC304 /* PlanFileImportView.swift in Sources */,
+				D1B020D03CBD8E0B85488814 /* PlanOverviewView.swift in Sources */,
+				3CB0C4CACB06F649E468B948 /* Recipe.swift in Sources */,
+				9849B9EFD389D809F047A190 /* RecipeDetailView.swift in Sources */,
+				7ACF49C49590778F35CF6AAE /* RecipeFileImportView.swift in Sources */,
+				8138329278933F01CFBD373C /* RecipeLibraryView.swift in Sources */,
+				A527949A2ABC123DA759E1CB /* RecipeScraperService.swift in Sources */,
+				16FE29166A7D915B0133EC46 /* RecipeSyncService.swift in Sources */,
+				DA7E481F33F20B32EA419005 /* RecipeURLImportView.swift in Sources */,
+				876CD34AEA78AABAA3642FEB /* SettingsView.swift in Sources */,
+				F35BDC69B03E9FAA4A9E98D3 /* StartupView.swift in Sources */,
+				824872509FFD386C2C9C358A /* Theme.swift in Sources */,
+				2BF442D9983C4DF886A76F8E /* ThemeTab.swift in Sources */,
+				C8A1F9CC0584ACD5BB2239F2 /* WeekendPlan.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28EFD6D189A7E44DF51143D8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/KitchenPlanner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		74D4487E7EDDA10649EC81B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D74968540DF1D80C54A90EFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sources/KitchenPlanner.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EEA292380F7A5390A62F3440 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		245DC3FF49CA5CB70A7EC11C /* Build configuration list for PBXNativeTarget "KitchenPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28EFD6D189A7E44DF51143D8 /* Debug */,
+				D74968540DF1D80C54A90EFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		358E038A65D984656C6BD21B /* Build configuration list for PBXProject "KitchenPlanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEA292380F7A5390A62F3440 /* Debug */,
+				74D4487E7EDDA10649EC81B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 05A3953F5215F5C8DFBE6DE2 /* Project object */;
+}

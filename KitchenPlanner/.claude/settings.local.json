@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/mills/Projects/kitchen-weekend-planner/**)"
+    ]
+  }
+}

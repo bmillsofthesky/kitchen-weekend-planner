@@ -1,0 +1,214 @@
+import SwiftUI
+import SwiftData
+
+struct MealView: View {
+    @Bindable var mealPlan: MealPlan
+    var movement: MovementConfiguration
+    @Environment(\.modelContext) private var context
+
+    @State private var selectedTab = 0
+    @State private var isEditing = false
+
+    var mealConfig: MealConfig? {
+        movement.mealConfig(day: mealPlan.dayNumber, mealType: mealPlan.mealTypeEnum)
+    }
+
+    var isPotluckEligible: Bool { mealConfig?.potluckEligible ?? false }
+
+    var body: some View {
+        TabView(selection: $selectedTab) {
+            RecipesTab(mealPlan: mealPlan, movement: movement, isEditing: $isEditing,
+                       isPotluckEligible: isPotluckEligible)
+                .tag(0)
+                .tabItem { Label("Recipes", systemImage: "fork.knife") }
+
+            ThemeTab(mealPlan: mealPlan)
+                .tag(1)
+                .tabItem { Label("Theme", systemImage: "paintbrush.fill") }
+        }
+        .navigationTitle("Day \(mealPlan.dayNumber) · \(mealPlan.mealType)")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            if selectedTab == 0 {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(isEditing ? "Done" : "Edit") {
+                        isEditing.toggle()
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Recipes Tab
+
+struct RecipesTab: View {
+    @Bindable var mealPlan: MealPlan
+    var movement: MovementConfiguration
+    @Binding var isEditing: Bool
+    var isPotluckEligible: Bool
+    @Environment(\.modelContext) private var context
+    @Query(sort: \Recipe.title) private var allRecipes: [Recipe]
+
+    var body: some View {
+        HStack(spacing: 0) {
+            // Meal slot columns
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    if isPotluckEligible {
+                        Toggle("Potluck Meal", isOn: Binding(
+                            get: { mealPlan.isPotluck },
+                            set: { mealPlan.isPotluck = $0; try? context.save() }
+                        ))
+                        .padding(.horizontal)
+                    }
+
+                    ForEach(RecipeSlot.allCases, id: \.self) { slot in
+                        RecipeSlotView(
+                            slot: slot,
+                            assignments: mealPlan.assignmentsForSlot(slot),
+                            isEditing: isEditing,
+                            headcount: movement.headcount,
+                            onDrop: { recipe in assign(recipe: recipe, slot: slot) },
+                            onMove: { from, to in move(slot: slot, from: from, to: to) },
+                            onDelete: { assignment in delete(assignment: assignment) }
+                        )
+                    }
+                }
+                .padding()
+            }
+            .frame(maxWidth: .infinity)
+
+            if isEditing {
+                Divider()
+                // Library panel
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Library")
+                        .font(.caption.bold())
+                        .foregroundStyle(.secondary)
+                        .padding(.horizontal)
+                        .padding(.top, 8)
+                    List(allRecipes) { recipe in
+                        Text(recipe.title)
+                            .font(.caption)
+                            .draggable(recipe.id)
+                    }
+                }
+                .frame(width: 160)
+                .background(.background.secondary)
+            }
+        }
+    }
+
+    private func assign(recipe: Recipe, slot: RecipeSlot) {
+        let existing = mealPlan.assignmentsForSlot(slot)
+        let order = (existing.map(\.order).max() ?? -1) + 1
+        let assignment = RecipeAssignment(recipe: recipe, slot: slot, order: order)
+        assignment.mealPlan = mealPlan
+        context.insert(assignment)
+        mealPlan.assignments.append(assignment)
+        try? context.save()
+    }
+
+    private func move(slot: RecipeSlot, from: IndexSet, to: Int) {
+        var slotAssignments = mealPlan.assignmentsForSlot(slot)
+        slotAssignments.move(fromOffsets: from, toOffset: to)
+        slotAssignments.enumerated().forEach { $0.element.order = $0.offset }
+        try? context.save()
+    }
+
+    private func delete(assignment: RecipeAssignment) {
+        mealPlan.assignments.removeAll { $0.id == assignment.id }
+        context.delete(assignment)
+        try? context.save()
+    }
+}
+
+struct RecipeSlotView: View {
+    var slot: RecipeSlot
+    var assignments: [RecipeAssignment]
+    var isEditing: Bool
+    var headcount: Int
+    var onDrop: (Recipe) -> Void
+    var onMove: (IndexSet, Int) -> Void
+    var onDelete: (RecipeAssignment) -> Void
+
+    @Query private var recipes: [Recipe]
+    @State private var isDropTargeted = false
+
+    var slotIcon: String {
+        switch slot {
+        case .main: return "fork.knife"
+        case .side: return "leaf.fill"
+        case .dessert: return "birthday.cake.fill"
+        }
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label(slot.rawValue + "s", systemImage: slotIcon)
+                .font(.subheadline.bold())
+                .foregroundStyle(.secondary)
+
+            if assignments.isEmpty {
+                Text("None assigned")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+                    .frame(maxWidth: .infinity, minHeight: 40)
+                    .background(isDropTargeted && isEditing ? .blue.opacity(0.1) : .clear)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(isDropTargeted && isEditing ? Color.blue : Color.clear, lineWidth: 2)
+                    )
+            } else {
+                if isEditing {
+                    List {
+                        ForEach(assignments) { a in
+                            if let recipe = a.recipe {
+                                HStack {
+                                    Image(systemName: "line.3.horizontal")
+                                        .foregroundStyle(.tertiary)
+                                    Text(recipe.title).font(.subheadline)
+                                    Spacer()
+                                    Text(recipe.costLabel(headcount: headcount))
+                                        .font(.caption).foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+                        .onMove { onMove($0, $1) }
+                        .onDelete { idxs in
+                            idxs.forEach { onDelete(assignments[$0]) }
+                        }
+                    }
+                    .listStyle(.plain)
+                    .frame(height: CGFloat(assignments.count) * 44 + 8)
+                } else {
+                    ForEach(assignments) { a in
+                        if let recipe = a.recipe {
+                            NavigationLink {
+                                RecipeDetailView(recipe: recipe, headcount: headcount)
+                            } label: {
+                                HStack {
+                                    Text(recipe.title).font(.subheadline)
+                                    Spacer()
+                                    Text(recipe.costLabel(headcount: headcount))
+                                        .font(.caption).foregroundStyle(.secondary)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .padding()
+        .background(.background)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(color: .black.opacity(0.05), radius: 3, y: 1)
+        .dropDestination(for: String.self) { ids, _ in
+            guard isEditing, let id = ids.first,
+                  let recipe = recipes.first(where: { $0.id == id }) else { return false }
+            onDrop(recipe)
+            return true
+        } isTargeted: { isDropTargeted = $0 }
+    }
+}
