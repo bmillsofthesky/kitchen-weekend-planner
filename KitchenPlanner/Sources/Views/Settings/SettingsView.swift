@@ -1,7 +1,6 @@
 import SwiftUI
 import SwiftData
 import MessageUI
-import UniformTypeIdentifiers
 
 struct SettingsView: View {
     var plan: WeekendPlan
@@ -14,7 +13,6 @@ struct SettingsView: View {
     @State private var showNewPlan = false
     @State private var showLoadPlan = false
     @State private var showImportPlan = false
-    @State private var showImportConfig = false
     @State private var showExportAlert = false
     @State private var exportAlertTitle = ""
     @State private var exportAlertMessage = ""
@@ -43,12 +41,6 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Configuration") {
-                Button { showImportConfig = true } label: {
-                    Label("Import Movement Config", systemImage: "gear.badge.plus")
-                }
-            }
-
             Section("Export") {
                 Button {
                     Task { await exportPlan() }
@@ -71,9 +63,6 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showImportPlan) {
             PlanFileImportView(onImported: { _ in showImportPlan = false })
-        }
-        .sheet(isPresented: $showImportConfig) {
-            ConfigImportView()
         }
         .sheet(isPresented: $showMailCompose) {
             if let data = exportData {
@@ -127,47 +116,6 @@ struct SettingsView: View {
             exportAlertTitle = "Export Failed"
             exportAlertMessage = error.localizedDescription
             showExportAlert = true
-        }
-    }
-}
-
-// MARK: - Config Import
-
-struct ConfigImportView: View {
-    @Environment(\.modelContext) private var context
-    @Environment(\.dismiss) private var dismiss
-    @State private var showPicker = false
-    @State private var message: String?
-
-    var body: some View {
-        NavigationStack {
-            VStack(spacing: 24) {
-                Image(systemName: "gear.badge.plus")
-                    .font(.system(size: 56))
-                    .foregroundStyle(.orange)
-                Text("Import a movement configuration JSON file.")
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal)
-                Button("Choose File") { showPicker = true }
-                    .buttonStyle(.borderedProminent)
-                if let msg = message { Text(msg).font(.caption).foregroundStyle(.secondary) }
-            }
-            .padding()
-            .navigationTitle("Import Config")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Done") { dismiss() } } }
-            .fileImporter(isPresented: $showPicker, allowedContentTypes: [.json]) { result in
-                do {
-                    let url = try result.get()
-                    guard url.startAccessingSecurityScopedResource() else { return }
-                    defer { url.stopAccessingSecurityScopedResource() }
-                    try ConfigurationSeeder.importFromURL(url, context: context)
-                    message = "Configuration imported successfully."
-                } catch {
-                    message = "Import failed: \(error.localizedDescription)"
-                }
-            }
         }
     }
 }

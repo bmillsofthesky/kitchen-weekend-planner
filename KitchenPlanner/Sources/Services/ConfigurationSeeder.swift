@@ -7,12 +7,6 @@ final class ConfigurationSeeder {
         seed(from: "movements", in: Bundle.main, context: context)
     }
 
-    static func importFromURL(_ url: URL, context: ModelContext) throws {
-        let data = try Data(contentsOf: url)
-        let dtos = try JSONDecoder().decode([MovementConfigurationDTO].self, from: data)
-        upsert(dtos: dtos, context: context)
-    }
-
     static func importFromData(_ data: Data, context: ModelContext) throws {
         let dtos = try JSONDecoder().decode([MovementConfigurationDTO].self, from: data)
         upsert(dtos: dtos, context: context)
