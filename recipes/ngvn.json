@@ -4,53 +4,54 @@
         "title": "Hashbrown Casserole",
         "description": "Saturday Breakfast",
         "servings": 8,
-        "type": "breakfast",
+        "type": "Side",
+        "labels": ["Breakfast"],
         "ingredients":
         [
             {
-                "id": "1",
+                "id": "10c3a9b3-6e2d-40ad-903d-1554125b10be",
                 "name": "Frozen Hashbrowns, thawed",
                 "amount": 40,
                 "measurement": "oz"
             },
             {
-                "id": "2",
+                "id": "8a38f0fb-b88f-408d-b222-e91da8507a7f",
                 "name": "Butter, melted",
                 "amount": 1.5,
                 "measurement": "sticks"
             },
             {
-                "id": "3",
+                "id": "3ddcac8b-f6bc-414a-b9aa-f2b41728e521",
                 "name": "Condensed cream of chicken soup",
                 "amount": 14.5,
                 "measurement": "oz"
             },
             {
-                "id": "4",
+                "id": "d101d06b-1816-4e15-979f-f255e404f19d",
                 "name": "Small onion, chopped",
                 "amount": 1,
                 "measurement": "whole"
             },
             {
-                "id": "5",
+                "id": "4392e34f-81b0-445a-bbcf-3186f58e39d9",
                 "name": "Cheddar cheese, shredded",
                 "amount": 2,
                 "measurement": "cups"
             },
             {
-                "id": "6",
+                "id": "078f1a40-45a1-4185-b35f-b7a63fdd03f6",
                 "name": "Sour cream",
                 "amount": 1.25,
                 "measurement": "cups"
             },
             {
-                "id": "7",
+                "id": "1b1b8af4-4970-43fd-9127-d21bfc0793da",
                 "name": "Salt",
                 "amount": 1.25,
                 "measurement": "tsp"
             },
             {
-                "id": "8",
+                "id": "6296eec4-bc0d-4103-9a74-cb5446f73d83",
                 "name": "Pepper",
                 "amount": 0.75,
                 "measurement": "tsp"
@@ -59,42 +60,42 @@
         "directions":
         [
             {
-                "id": "1",
+                "id": "2b9fed53-0f71-47aa-ac00-f053c8cf09b1",
                 "order": 1,
                 "text": "Preheat the oven to 350°F."
             },
             {
-                "id": "2",
+                "id": "0dbb2103-0ef7-40ad-af85-42595028afb1",
                 "order": 2,
                 "text": "Mix chopped onion, 1 cup shredded cheddar cheese, salt, and pepper in a large bowl."
             },
             {
-                "id": "3",
+                "id": "93c19fb3-28d3-444e-a351-f3c845b7ea2a",
                 "order": 3,
                 "text": "Add sour cream and cream of chicken soup, mix well."
             },
             {
-                "id": "4",
+                "id": "9572e330-ebe2-44b2-83ce-07e0dcc16625",
                 "order": 4,
                 "text": "Add hashbrowns and melted butter, mix until combined."
             },
             {
-                "id": "5",
+                "id": "24055044-1086-432d-ade8-9d272d9ec201",
                 "order": 5,
                 "text": "Grease a baking pan with non-stick cooking spray."
             },
             {
-                "id": "6",
+                "id": "d007a904-79a9-4d1a-b166-3c4618c5bfaa",
                 "order": 6,
                 "text": "Spoon the hash brown mixture into the pan and spread evenly."
             },
             {
-                "id": "7",
+                "id": "43bd9768-acdf-4f7d-9966-ae11d790e7f6",
                 "order": 7,
                 "text": "Sprinkle with remaining 1 cup shredded cheddar cheese."
             },
             {
-                "id": "8",
+                "id": "2825de36-d3b4-4c66-add4-84c911f61a27",
                 "order": 8,
                 "text": "Bake in the preheated oven for 45-60 minutes until ready."
             }
