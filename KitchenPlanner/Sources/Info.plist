@@ -24,6 +24,8 @@
 	<string>Camera access is not required.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Select photos for theme cover images and reference images.</string>
+	<key>RecipeSyncURL</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -44,7 +46,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>RecipeSyncURL</key>
-	<string></string>
 </dict>
 </plist>
