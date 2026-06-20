@@ -5,8 +5,8 @@
     "abbr": "NGVN",
     "headcount": 120,
     "budget": 3500.00,
-    "exportEmail": "kitchen@ngvn.org",
-    "recipesUrl": "",
+    "exportEmail": "ngvnkitchencouple2021@gmail.com",
+    "recipesUrl": "https://github.com/bmillsofthesky/kitchen-weekend-planner/recipes/ngvn.json",
     "days": [
       {
         "dayNumber": 1,

@@ -40,7 +40,7 @@
 		05E67BB8FD83CBC690629302 /* ConfigurationSeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSeeder.swift; sourceTree = "<group>"; };
 		1BB7B6013FBD1555CE2649AD /* RecipeURLImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeURLImportView.swift; sourceTree = "<group>"; };
 		2B0C6EDF8CDFA9CEE998BCF7 /* ManualRecipeFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualRecipeFormView.swift; sourceTree = "<group>"; };
-		32AEB851F6198FEB6826A499 /* KitchenPlanner.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = KitchenPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32AEB851F6198FEB6826A499 /* KitchenPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KitchenPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		333B7D38EAC2918F4158E125 /* RecipeFileImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeFileImportView.swift; sourceTree = "<group>"; };
 		3368FCD85D69B26314F09C93 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		35C0C09389E134F778AD4EE7 /* movements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movements.json; sourceTree = "<group>"; };
@@ -223,8 +223,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1600;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 358E038A65D984656C6BD21B /* Build configuration list for PBXProject "KitchenPlanner" */;
 			developmentRegion = en;
@@ -299,13 +297,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sources/KitchenPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2PL79FWZJY;
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				PRODUCT_BUNDLE_IDENTIFIER = kitchenplanner.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -377,13 +376,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Sources/KitchenPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2PL79FWZJY;
 				INFOPLIST_FILE = Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kitchenplanner.app;
+				PRODUCT_BUNDLE_IDENTIFIER = kitchenplanner.app;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
