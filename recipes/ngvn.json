@@ -1,0 +1,104 @@
+[
+    {
+        "id": "db58ddd5-b99b-4693-a39d-5e276e1ea0ef",
+        "title": "Hashbrown Casserole",
+        "description": "Saturday Breakfast",
+        "servings": 8,
+        "type": "breakfast",
+        "ingredients":
+        [
+            {
+                "id": "1",
+                "name": "Frozen Hashbrowns, thawed",
+                "amount": 40,
+                "measurement": "oz"
+            },
+            {
+                "id": "2",
+                "name": "Butter, melted",
+                "amount": 1.5,
+                "measurement": "sticks"
+            },
+            {
+                "id": "3",
+                "name": "Condensed cream of chicken soup",
+                "amount": 14.5,
+                "measurement": "oz"
+            },
+            {
+                "id": "4",
+                "name": "Small onion, chopped",
+                "amount": 1,
+                "measurement": "whole"
+            },
+            {
+                "id": "5",
+                "name": "Cheddar cheese, shredded",
+                "amount": 2,
+                "measurement": "cups"
+            },
+            {
+                "id": "6",
+                "name": "Sour cream",
+                "amount": 1.25,
+                "measurement": "cups"
+            },
+            {
+                "id": "7",
+                "name": "Salt",
+                "amount": 1.25,
+                "measurement": "tsp"
+            },
+            {
+                "id": "8",
+                "name": "Pepper",
+                "amount": 0.75,
+                "measurement": "tsp"
+            }
+        ],
+        "directions":
+        [
+            {
+                "id": "1",
+                "order": 1,
+                "text": "Preheat the oven to 350°F."
+            },
+            {
+                "id": "2",
+                "order": 2,
+                "text": "Mix chopped onion, 1 cup shredded cheddar cheese, salt, and pepper in a large bowl."
+            },
+            {
+                "id": "3",
+                "order": 3,
+                "text": "Add sour cream and cream of chicken soup, mix well."
+            },
+            {
+                "id": "4",
+                "order": 4,
+                "text": "Add hashbrowns and melted butter, mix until combined."
+            },
+            {
+                "id": "5",
+                "order": 5,
+                "text": "Grease a baking pan with non-stick cooking spray."
+            },
+            {
+                "id": "6",
+                "order": 6,
+                "text": "Spoon the hash brown mixture into the pan and spread evenly."
+            },
+            {
+                "id": "7",
+                "order": 7,
+                "text": "Sprinkle with remaining 1 cup shredded cheddar cheese."
+            },
+            {
+                "id": "8",
+                "order": 8,
+                "text": "Bake in the preheated oven for 45-60 minutes until ready."
+            }
+        ],
+        "notes": "Prep time: 15 mins. Cook time: 50 mins."
+    }
+]
