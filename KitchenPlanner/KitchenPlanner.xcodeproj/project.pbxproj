@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		16FE29166A7D915B0133EC46 /* RecipeSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D040B629C218859F8D467B41 /* RecipeSyncService.swift */; };
+		7D1394CD8AD94162B789C693 /* DirectionScaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B09B3AE99004639BF0785F3 /* DirectionScaler.swift */; };
 		22C4A8F776FF26A34DAF8860 /* KitchenPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE4B5AA814A4219A7F363B9 /* KitchenPlannerApp.swift */; };
 		28B04C2F58D31FF627C80509 /* LoadPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A71C18F99150C5F66C1783 /* LoadPlanView.swift */; };
 		2BF442D9983C4DF886A76F8E /* ThemeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0A0D670560330EC977D225 /* ThemeTab.swift */; };
@@ -64,6 +65,7 @@
 		B2D99DEF7DA57A5A94E60337 /* WeekendPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekendPlan.swift; sourceTree = "<group>"; };
 		BAEE2FC9EFAFE3A39B390297 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		D040B629C218859F8D467B41 /* RecipeSyncService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSyncService.swift; sourceTree = "<group>"; };
+		6B09B3AE99004639BF0785F3 /* DirectionScaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionScaler.swift; sourceTree = "<group>"; };
 		D99E8AF7FC6BCB0CEA63698F /* PlanOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOverviewView.swift; sourceTree = "<group>"; };
 		E91CB4F88BE467E88E5B2EB4 /* KitchenPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KitchenPlanner.entitlements; sourceTree = "<group>"; };
 		F07157DFED11AB7C177C131C /* PlanExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanExporter.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */,
 				05E67BB8FD83CBC690629302 /* ConfigurationSeeder.swift */,
+				6B09B3AE99004639BF0785F3 /* DirectionScaler.swift */,
 				F07157DFED11AB7C177C131C /* PlanExporter.swift */,
 				49459AE7D72B109AD061A861 /* RecipeScraperService.swift */,
 				D040B629C218859F8D467B41 /* RecipeSyncService.swift */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				54849869F5FE3B4A27816ED8 /* BudgetCalculator.swift in Sources */,
+				7D1394CD8AD94162B789C693 /* DirectionScaler.swift in Sources */,
 				5F4369C10026A0B3C66274A8 /* BudgetProgressBar.swift in Sources */,
 				C6A71ECE8A55DB6CFA4B8460 /* ConfigurationSeeder.swift in Sources */,
 				C35711B938F410351067EA1C /* ContentView.swift in Sources */,

@@ -3,7 +3,8 @@ import Foundation
 struct BudgetCalculator {
     static func totalCost(plan: WeekendPlan, headcount: Int) -> Double {
         plan.mealPlans.flatMap { $0.assignments }.reduce(0.0) { sum, a in
-            sum + (a.recipe?.costPerServing ?? 0) * Double(headcount)
+            guard let recipe = a.recipe else { return sum }
+            return sum + (Double(headcount) / Double(recipe.servingSize)) * (recipe.costForRecipe ?? 0)
         }
     }
 

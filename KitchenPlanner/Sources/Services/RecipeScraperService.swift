@@ -79,7 +79,6 @@ private struct SchemaRecipeDTO: Codable {
     }
 
     func toRecipeDTO() throws -> RecipeDTO {
-        let servings = recipeYield?.intValue ?? 1
         let ingredients = (recipeIngredient ?? []).map { raw -> IngredientDTO in
             let parts = raw.components(separatedBy: .whitespaces).filter { !$0.isEmpty }
             let amount = parts.first.flatMap { Double($0) }
@@ -96,13 +95,13 @@ private struct SchemaRecipeDTO: Codable {
             id: UUID().uuidString,
             title: name ?? "Untitled",
             description: description,
-            costPerServing: nil,
+            costForRecipe: nil,
+            servingSize: recipeYield?.intValue,
             type: nil,
             labels: nil,
             ingredients: ingredients,
             directions: directions,
             notes: nil,
-            servings: servings,
             sourceURL: nil
         )
     }

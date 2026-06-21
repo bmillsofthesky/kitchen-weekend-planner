@@ -50,9 +50,9 @@ meals[]     — ordered by day and meal type; each meal contains:
   recipes[]     — each recipe contains:
     title         — string
     slot          — "Main" | "Side" | "Dessert"
-    costPerServing — number
-    totalCost      — costPerServing × headcount
-    ingredients[] — name, section, measurement, scaledAmount (amount × headcount)
+    costForRecipe  — number (cost at native serving size)
+    totalCost      — (headcount / servingSize) × costForRecipe
+    ingredients[] — name, section, measurement, scaledAmount (amount scaled to headcount)
 ```
 
 Directions SHALL NOT be included in the export.
@@ -63,11 +63,22 @@ Directions SHALL NOT be included in the export.
 
 #### Scenario: Ingredients scaled to headcount
 - **WHEN** the export file is generated
-- **THEN** each ingredient's `scaledAmount` SHALL equal the single-serving amount multiplied by the movement configuration headcount
+- **THEN** each ingredient's `scaledAmount` SHALL equal the native-serving amount multiplied by `headcount / servingSize`
 
 #### Scenario: Cost fields included despite UI hiding
 - **WHEN** the export file is generated
-- **THEN** `costPerServing` and `totalCost` SHALL be included in each recipe even though these values are never displayed in the app UI
+- **THEN** `costForRecipe` and `totalCost` SHALL be included in each recipe even though these values are never displayed in the app UI
+
+### Requirement: Recipe cost in export
+The exported plan SHALL include each recipe's `costForRecipe` (native batch cost) and a calculated `totalCost` equal to `(headcount / servingSize) * costForRecipe`, representing the cost to feed the weekend headcount with that recipe.
+
+#### Scenario: Export includes scaled total cost
+- **WHEN** a plan is exported and a recipe has `costForRecipe = 20.00`, `servingSize = 4`, and headcount is 8
+- **THEN** the exported recipe SHALL include `totalCost = 40.00`
+
+#### Scenario: Export includes native cost for recipe
+- **WHEN** a plan is exported
+- **THEN** the exported recipe SHALL include `costForRecipe` reflecting the cost at the recipe's native serving size
 
 ### Requirement: Ingredients exported per-recipe without consolidation
 The export SHALL include ingredients per recipe without consolidating or deduplicating across recipes. The consuming Claude AI process is responsible for consolidating ingredients and performing unit conversions (e.g., combining "4 cups flour" from one recipe with "5 cups flour" from another).

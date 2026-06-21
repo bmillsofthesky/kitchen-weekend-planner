@@ -76,7 +76,7 @@ struct RecipeDetailView: View {
                                 }
                                 ForEach(recipe.ingredients.filter { $0.section == section }) { ing in
                                     HStack {
-                                        Text(formatAmount(ing.amount))
+                                        Text(formatAmount(ing.amount * Double(headcount) / Double(recipe.servingSize)))
                                             .font(.body.monospacedDigit())
                                             .foregroundStyle(.secondary)
                                             .frame(width: 60, alignment: .trailing)
@@ -104,7 +104,7 @@ struct RecipeDetailView: View {
                                         Text("\(dir.order).")
                                             .foregroundStyle(.secondary)
                                             .frame(width: 24, alignment: .trailing)
-                                        Text(dir.text)
+                                        Text(scaleDirectionText(dir.text, ratio: Double(headcount) / Double(recipe.servingSize)))
                                     }
                                     .font(.subheadline)
                                 }
