@@ -10,5 +10,5 @@
 
 ## 3. Verification
 
-- [ ] 3.1 View a recipe with `servingSize > 1` in the detail view and confirm direction quantities with recognized units are scaled while temperatures and times are not
-- [ ] 3.2 View a recipe with `servingSize = 1` at any headcount and confirm directions are scaled correctly (ratio = headcount)
+- [x] 3.1 View a recipe with `servingSize > 1` in the detail view and confirm direction quantities with recognized units are scaled while temperatures and times are not
+- [x] 3.2 View a recipe with `servingSize = 1` at any headcount and confirm directions are scaled correctly (ratio = headcount)
