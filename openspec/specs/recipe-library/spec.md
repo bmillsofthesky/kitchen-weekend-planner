@@ -5,11 +5,11 @@ Defines the recipe data model, storage, and all methods by which recipes enter t
 ## Requirements
 
 ### Requirement: Recipe data model
-Each recipe SHALL store: title, description, cost_per_serving, type (Entree | Side | Dessert | Other), labels (Breakfast | Lunch | Dinner | Soup | Salad | Sauce | custom), ingredients (name, measurement, amount, section), directions (order, text, section), and notes.
+Each recipe SHALL store: title, description, costForRecipe (total cost for the recipe's native serving size), servingSize (number of servings the recipe ingredients are written for), type (Entree | Side | Dessert | Other), labels (Breakfast | Lunch | Dinner | Soup | Salad | Sauce | custom), ingredients (name, measurement, amount at native serving size, section), directions (order, text, section), and notes.
 
 #### Scenario: Recipe displays all fields
 - **WHEN** a user views a recipe's detail page
-- **THEN** all populated fields SHALL be displayed: title, description, type, labels, ingredients grouped by section, directions ordered by section and step, and notes
+- **THEN** all populated fields SHALL be displayed: title, description, type, labels, ingredients (scaled to headcount) grouped by section, directions ordered by section and step, and notes
 
 #### Scenario: Custom labels supported
 - **WHEN** a user adds a label that is not in the predefined list
@@ -64,19 +64,13 @@ The user SHALL be able to manually create a recipe by filling in all fields in a
 - **THEN** the recipe SHALL be saved to local storage with isCustom = true and appear in the recipe library
 
 ### Requirement: Recipe cost labeling
-Each recipe SHALL display a cost label based on its cost_per_serving scaled to the active weekend's headcount: Unknown (no cost data), $ (Inexpensive), $$ (Moderate), $$$ (Expensive), $$$$ (Very Expensive).
+Each recipe SHALL display a cost label based on its `costForRecipe` scaled to the active weekend's headcount using the formula `(headcount / servingSize) * costForRecipe`. Cost tiers: Unknown (no cost data), $ (Inexpensive), $$ (Moderate), $$$ (Expensive), $$$$ (Very Expensive).
 
 #### Scenario: Cost label shown in library and meal view
 - **WHEN** a recipe is displayed in the library or a meal slot
-- **THEN** the appropriate cost label SHALL be shown based on headcount × cost_per_serving
+- **THEN** the appropriate cost label SHALL be shown based on `(headcount / servingSize) * costForRecipe`
 
 #### Scenario: Unknown label for missing cost
-- **WHEN** a recipe has no cost_per_serving value
+- **WHEN** a recipe has no `costForRecipe` value
 - **THEN** the label SHALL display "Unknown"
 
-### Requirement: Recipe converted to single-serving on import
-When a recipe is imported (from URL or file), the system SHALL normalize ingredient amounts to single-serving quantities.
-
-#### Scenario: Amounts normalized on import
-- **WHEN** a recipe is imported from a URL or file with multi-serving quantities
-- **THEN** the stored ingredient amounts SHALL reflect a single serving

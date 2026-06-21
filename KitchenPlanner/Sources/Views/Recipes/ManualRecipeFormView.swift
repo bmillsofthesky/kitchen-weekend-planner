@@ -10,7 +10,7 @@ struct ManualRecipeFormView: View {
     @State private var title = ""
     @State private var description = ""
     @State private var type: RecipeType = .other
-    @State private var costPerServing = ""
+    @State private var costForRecipe = ""
     @State private var labels: [String] = []
     @State private var labelInput = ""
     @State private var ingredients: [Ingredient] = []
@@ -32,7 +32,7 @@ struct ManualRecipeFormView: View {
                             Text(t.rawValue).tag(t)
                         }
                     }
-                    TextField("Cost per serving ($)", text: $costPerServing)
+                    TextField("Recipe cost ($)", text: $costForRecipe)
                         .keyboardType(.decimalPad)
                 }
 
@@ -113,14 +113,13 @@ struct ManualRecipeFormView: View {
         title = dto.title
         description = dto.description ?? ""
         type = RecipeType(rawValue: dto.type ?? "") ?? .other
-        costPerServing = dto.costPerServing.map { String($0) } ?? ""
+        costForRecipe = dto.costForRecipe.map { String($0) } ?? ""
         labels = dto.labels ?? []
-        let servings = dto.servings ?? 1
         ingredients = (dto.ingredients ?? []).map { ing in
             Ingredient(
                 name: ing.name,
                 measurement: ing.measurement ?? "",
-                amount: (ing.amount ?? 0) / Double(max(servings, 1)),
+                amount: ing.amount ?? 0,
                 section: ing.section ?? ""
             )
         }
@@ -134,7 +133,7 @@ struct ManualRecipeFormView: View {
         let recipe = Recipe(
             title: title.trimmingCharacters(in: .whitespaces),
             description: description,
-            costPerServing: Double(costPerServing),
+            costForRecipe: Double(costForRecipe),
             type: type,
             labels: labels,
             ingredients: ingredients,
@@ -164,7 +163,7 @@ struct IngredientFormView: View {
         NavigationStack {
             Form {
                 TextField("Name", text: $name)
-                TextField("Amount (single serving)", text: $amount).keyboardType(.decimalPad)
+                TextField("Amount", text: $amount).keyboardType(.decimalPad)
                 TextField("Measurement (cups, tbsp…)", text: $measurement)
                 TextField("Section (optional)", text: $section)
             }

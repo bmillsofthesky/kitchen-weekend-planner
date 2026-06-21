@@ -16,7 +16,7 @@ When a weekend plan is active, the app SHALL display a persistent budget progres
 - **THEN** no raw cost figures, budget totals, or per-recipe prices SHALL appear anywhere in the UI
 
 ### Requirement: Budget calculation
-The total recipe cost SHALL be calculated as the sum of (headcount × cost_per_serving) for every recipe assigned to any meal in the active weekend plan. Recipes with no cost_per_serving SHALL contribute $0 to the total.
+The total recipe cost SHALL be calculated as the sum of `(headcount / servingSize) * costForRecipe` for every recipe assigned to any meal in the active weekend plan. Recipes with no `costForRecipe` SHALL contribute $0 to the total.
 
 #### Scenario: Cost updates when recipe assigned
 - **WHEN** the user assigns a recipe to a meal slot
@@ -27,8 +27,12 @@ The total recipe cost SHALL be calculated as the sum of (headcount × cost_per_s
 - **THEN** the progress bar SHALL decrease accordingly
 
 #### Scenario: Recipes with unknown cost excluded
-- **WHEN** a recipe has no cost_per_serving
+- **WHEN** a recipe has no `costForRecipe`
 - **THEN** it SHALL contribute $0 to the budget calculation
+
+#### Scenario: Cost scales correctly with serving size
+- **WHEN** a recipe has `servingSize = 4`, `costForRecipe = 20.00`, and headcount is 8
+- **THEN** that recipe SHALL contribute $40.00 to the total budget cost
 
 ### Requirement: Color-coded progress indication
 The progress bar SHALL change color to indicate budget status: green (well under budget), yellow (approaching budget), red (at or over budget).

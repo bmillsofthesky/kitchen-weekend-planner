@@ -21,7 +21,7 @@ struct Ingredient: Codable, Identifiable, Hashable {
     var id: UUID = UUID()
     var name: String
     var measurement: String  // e.g. "cups", "tbsp"
-    var amount: Double       // single-serving normalized
+    var amount: Double       // at native serving size
     var section: String      // e.g. "Sauce", "Dough", "" for main
 }
 
@@ -37,7 +37,8 @@ final class Recipe {
     @Attribute(.unique) var id: String
     var title: String
     var recipeDescription: String
-    var costPerServing: Double?   // nil means unknown
+    @Attribute(originalName: "costPerServing") var costForRecipe: Double?
+    var servingSize: Int = 1
     var type: String              // RecipeType.rawValue
     var labelsData: Data          // JSON-encoded [String]
     var ingredientsData: Data     // JSON-encoded [Ingredient]
@@ -66,13 +67,14 @@ final class Recipe {
     }
 
     init(id: String = UUID().uuidString, title: String, description: String = "",
-         costPerServing: Double? = nil, type: RecipeType = .other, labels: [String] = [],
-         ingredients: [Ingredient] = [], directions: [Direction] = [],
+         costForRecipe: Double? = nil, servingSize: Int = 1, type: RecipeType = .other,
+         labels: [String] = [], ingredients: [Ingredient] = [], directions: [Direction] = [],
          notes: String = "", isCustom: Bool = true, sourceURL: String? = nil) {
         self.id = id
         self.title = title
         self.recipeDescription = description
-        self.costPerServing = costPerServing
+        self.costForRecipe = costForRecipe
+        self.servingSize = servingSize
         self.type = type.rawValue
         self.labelsData = (try? JSONEncoder().encode(labels)) ?? Data()
         self.ingredientsData = (try? JSONEncoder().encode(ingredients)) ?? Data()
@@ -83,8 +85,8 @@ final class Recipe {
     }
 
     func costLabel(headcount: Int) -> String {
-        guard let cost = costPerServing else { return "Unknown" }
-        let total = cost * Double(headcount)
+        guard let cost = costForRecipe else { return "Unknown" }
+        let total = (Double(headcount) / Double(servingSize)) * cost
         switch total {
         case ..<50: return "$"
         case 50..<150: return "$$"
@@ -100,13 +102,13 @@ struct RecipeDTO: Codable {
     var id: String
     var title: String
     var description: String?
-    var costPerServing: Double?
+    var costForRecipe: Double?
+    var servingSize: Int?
     var type: String?
     var labels: [String]?
     var ingredients: [IngredientDTO]?
     var directions: [DirectionDTO]?
     var notes: String?
-    var servings: Int?
     var sourceURL: String?
 }
 

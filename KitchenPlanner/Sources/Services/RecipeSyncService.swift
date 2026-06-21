@@ -35,24 +35,19 @@ final class RecipeSyncService {
     }
 
     private static func makeRecipe(from dto: RecipeDTO, isCustom: Bool) -> Recipe {
-        let servings = dto.servings ?? 1
-        let ingredients = (dto.ingredients ?? []).map { ing -> Ingredient in
-            let amount = (ing.amount ?? 0) / Double(max(servings, 1))
-            return Ingredient(
-                name: ing.name,
-                measurement: ing.measurement ?? "",
-                amount: amount,
-                section: ing.section ?? ""
-            )
+        let ingredients = (dto.ingredients ?? []).map { ing in
+            Ingredient(name: ing.name, measurement: ing.measurement ?? "",
+                       amount: ing.amount ?? 0, section: ing.section ?? "")
         }
-        let directions = (dto.directions ?? []).enumerated().map { i, dir -> Direction in
+        let directions = (dto.directions ?? []).enumerated().map { i, dir in
             Direction(order: dir.order ?? i, text: dir.text, section: dir.section ?? "")
         }
         return Recipe(
             id: dto.id,
             title: dto.title,
             description: dto.description ?? "",
-            costPerServing: dto.costPerServing,
+            costForRecipe: dto.costForRecipe,
+            servingSize: dto.servingSize ?? 1,
             type: RecipeType(rawValue: dto.type ?? "") ?? .other,
             labels: dto.labels ?? [],
             ingredients: ingredients,
@@ -64,18 +59,17 @@ final class RecipeSyncService {
     }
 
     private static func apply(dto: RecipeDTO, to recipe: Recipe) {
-        let servings = dto.servings ?? 1
         recipe.title = dto.title
         recipe.recipeDescription = dto.description ?? recipe.recipeDescription
-        recipe.costPerServing = dto.costPerServing ?? recipe.costPerServing
+        recipe.costForRecipe = dto.costForRecipe ?? recipe.costForRecipe
+        recipe.servingSize = dto.servingSize ?? recipe.servingSize
         recipe.type = dto.type ?? recipe.type
         recipe.labels = dto.labels ?? recipe.labels
         recipe.notes = dto.notes ?? recipe.notes
         if let ings = dto.ingredients {
-            recipe.ingredients = ings.map { ing -> Ingredient in
-                let amount = (ing.amount ?? 0) / Double(max(servings, 1))
-                return Ingredient(name: ing.name, measurement: ing.measurement ?? "",
-                                  amount: amount, section: ing.section ?? "")
+            recipe.ingredients = ings.map { ing in
+                Ingredient(name: ing.name, measurement: ing.measurement ?? "",
+                           amount: ing.amount ?? 0, section: ing.section ?? "")
             }
         }
         if let dirs = dto.directions {

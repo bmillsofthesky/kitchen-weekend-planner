@@ -32,7 +32,7 @@ struct ExportPlan: Encodable {
     struct ExportRecipe: Encodable {
         var title: String
         var slot: String
-        var costPerServing: Double
+        var costForRecipe: Double
         var totalCost: Double
         var ingredients: [ExportIngredient]
     }
@@ -57,9 +57,10 @@ final class PlanExporter {
             }
             let recipes = mp.assignments.sorted { $0.order < $1.order }.compactMap { a -> ExportPlan.ExportRecipe? in
                 guard let r = a.recipe else { return nil }
-                let cost = r.costPerServing ?? 0
+                let cost = r.costForRecipe ?? 0
+                let ratio = Double(movement.headcount) / Double(r.servingSize)
                 let ings = r.ingredients.map { ing -> ExportPlan.ExportIngredient in
-                    let scaled = ing.amount * Double(movement.headcount)
+                    let scaled = ing.amount * ratio
                     return ExportPlan.ExportIngredient(
                         name: ing.name,
                         section: ing.section,
@@ -70,8 +71,8 @@ final class PlanExporter {
                 return ExportPlan.ExportRecipe(
                     title: r.title,
                     slot: a.slot,
-                    costPerServing: cost,
-                    totalCost: cost * Double(movement.headcount),
+                    costForRecipe: cost,
+                    totalCost: ratio * cost,
                     ingredients: ings
                 )
             }
