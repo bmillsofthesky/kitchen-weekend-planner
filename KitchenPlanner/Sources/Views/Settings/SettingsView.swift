@@ -10,6 +10,7 @@ struct SettingsView: View {
     @Query private var allPlans: [WeekendPlan]
     @Query private var allMovements: [MovementConfiguration]
 
+    @State private var showBudgetSheet = false
     @State private var showNewPlan = false
     @State private var showLoadPlan = false
     @State private var showImportPlan = false
@@ -27,22 +28,6 @@ struct SettingsView: View {
                 LabeledContent("Plan", value: plan.name)
                 LabeledContent("Movement", value: movement.abbr)
                 LabeledContent("Headcount", value: "\(movement.headcount)")
-            }
-
-            Section("Budget") {
-                BudgetProgressBar(plan: plan, movement: movement)
-                    .frame(height: 6)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 16, bottom: 4, trailing: 16))
-                let utilization = BudgetCalculator.utilization(plan: plan, movement: movement)
-                HStack {
-                    Text(budgetStatusLabel(utilization))
-                        .font(.caption)
-                        .foregroundStyle(budgetStatusColor(utilization))
-                    Spacer()
-                    Text("\(Int(utilization * 100))% used")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
             }
 
             Section("Plan Management") {
@@ -71,6 +56,16 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Settings")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { showBudgetSheet = true } label: {
+                    Image(systemName: "chart.bar.fill")
+                }
+            }
+        }
+        .sheet(isPresented: $showBudgetSheet) {
+            BudgetSheetView(plan: plan, movement: movement)
+        }
         .sheet(isPresented: $showNewPlan) {
             NewPlanFormView(onCreated: { _ in showNewPlan = false })
         }
@@ -112,22 +107,6 @@ struct SettingsView: View {
             Button("OK") {}
         } message: {
             Text(exportAlertMessage)
-        }
-    }
-
-    private func budgetStatusLabel(_ utilization: Double) -> String {
-        switch utilization {
-        case ..<0.7: return "On track"
-        case 0.7..<1.0: return "Approaching limit"
-        default: return "Over budget"
-        }
-    }
-
-    private func budgetStatusColor(_ utilization: Double) -> Color {
-        switch utilization {
-        case ..<0.7: return .green
-        case 0.7..<1.0: return .yellow
-        default: return .red
         }
     }
 

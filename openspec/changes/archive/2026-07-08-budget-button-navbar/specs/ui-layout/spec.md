@@ -1,11 +1,7 @@
-## Purpose
-
-Defines layout rules for persistent chrome, navigation bar placement, and sub-navigation patterns across all views.
-
-## Requirements
+## MODIFIED Requirements
 
 ### Requirement: Budget accessible from any screen via toolbar
-A budget button SHALL be present in the top navigation bar on every main tab. The Settings page SHALL NOT display a dedicated Budget section — budget information is accessible exclusively via the toolbar sheet.
+A budget button SHALL be present in the top navigation bar on every main tab, allowing the user to view budget utilization without leaving their current screen.
 
 #### Scenario: Budget button visible in top navigation bar on Plan tab
 - **WHEN** a user is on the Plan tab
@@ -19,10 +15,6 @@ A budget button SHALL be present in the top navigation bar on every main tab. Th
 - **WHEN** a user is on the Settings tab
 - **THEN** a budget button SHALL be visible in the top-right of the navigation bar
 
-#### Scenario: No budget section in Settings list
-- **WHEN** a user navigates to the Settings tab
-- **THEN** no Budget section SHALL appear in the Settings list
-
 #### Scenario: Budget sheet opens on tap
 - **WHEN** a user taps the budget button in the navigation bar
 - **THEN** a sheet SHALL appear showing the budget progress bar, utilization percentage, and status label
@@ -34,14 +26,3 @@ A budget button SHALL be present in the top navigation bar on every main tab. Th
 #### Scenario: No monetary values in budget sheet
 - **WHEN** the budget sheet is displayed
 - **THEN** no dollar amounts SHALL be shown — only the progress bar, percentage, and status label
-
-### Requirement: MealView sub-navigation does not render a bottom tab bar
-The Recipes/Theme navigation inside MealView SHALL NOT produce a tab bar at the bottom of the screen. The control for switching between Recipes and Theme SHALL be rendered in the navigation bar area.
-
-#### Scenario: No double tab bar in MealView
-- **WHEN** a user opens a meal planning view
-- **THEN** only the main app tab bar SHALL be visible at the bottom; no secondary tab bar SHALL appear
-
-#### Scenario: Recipes and Theme views remain accessible
-- **WHEN** a user is in MealView
-- **THEN** they SHALL be able to switch between the Recipes and Theme views using a control in the navigation bar

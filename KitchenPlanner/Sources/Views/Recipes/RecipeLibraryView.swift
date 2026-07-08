@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct RecipeLibraryView: View {
+    var plan: WeekendPlan
     var movement: MovementConfiguration
 
     @Query(sort: \Recipe.title) private var allRecipes: [Recipe]
@@ -11,6 +12,7 @@ struct RecipeLibraryView: View {
     @State private var showURLImport = false
     @State private var showFileImport = false
     @State private var isSyncing = false
+    @State private var showBudgetSheet = false
     @Environment(\.modelContext) private var context
 
     private let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -54,6 +56,9 @@ struct RecipeLibraryView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {
+                    Button { showBudgetSheet = true } label: {
+                        Image(systemName: "chart.bar.fill")
+                    }
                     Button {
                         Task { await syncRecipes() }
                     } label: {
@@ -89,6 +94,9 @@ struct RecipeLibraryView: View {
         }
         .sheet(isPresented: $showFileImport) {
             RecipeFileImportView()
+        }
+        .sheet(isPresented: $showBudgetSheet) {
+            BudgetSheetView(plan: plan, movement: movement)
         }
     }
 

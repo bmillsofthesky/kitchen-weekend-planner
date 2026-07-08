@@ -12,7 +12,7 @@ struct MainTabView: View {
             .tabItem { Label("Plan", systemImage: "calendar") }
 
             NavigationStack {
-                RecipeLibraryView(movement: movement)
+                RecipeLibraryView(plan: plan, movement: movement)
             }
             .tabItem { Label("Recipes", systemImage: "book.fill") }
 
