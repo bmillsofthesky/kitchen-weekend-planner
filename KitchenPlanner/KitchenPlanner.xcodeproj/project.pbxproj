@@ -17,6 +17,7 @@
 		5177C3AEBBD1769108A2E449 /* movements.json in Resources */ = {isa = PBXBuildFile; fileRef = 35C0C09389E134F778AD4EE7 /* movements.json */; };
 		54849869F5FE3B4A27816ED8 /* BudgetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */; };
 		5F4369C10026A0B3C66274A8 /* BudgetProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */; };
+		BB11CC22DD33EE44FF550011 /* BudgetSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11CC22DD33EE44FF550022 /* BudgetSheetView.swift */; };
 		AA11BB22CC33DD44EE55FF66 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11BB22CC33DD44EE55FF77 /* AppColors.swift */; };
 		7ACF49C49590778F35CF6AAE /* RecipeFileImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333B7D38EAC2918F4158E125 /* RecipeFileImportView.swift */; };
 		80065F14C90E3D6F98407710 /* NewPlanFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3E195BCCFCF30EF7DC1A0 /* NewPlanFormView.swift */; };
@@ -54,6 +55,7 @@
 		49459AE7D72B109AD061A861 /* RecipeScraperService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeScraperService.swift; sourceTree = "<group>"; };
 		4BB1B1295F4022C6BF2DE724 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressBar.swift; sourceTree = "<group>"; };
+		BB11CC22DD33EE44FF550022 /* BudgetSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetSheetView.swift; sourceTree = "<group>"; };
 		AA11BB22CC33DD44EE55FF77 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		5315D5CE5338CC1F2EFEEF86 /* RecipeLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeLibraryView.swift; sourceTree = "<group>"; };
 		55678C87C25DB710B4339B67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				4E9A017965D89C1D302D3580 /* BudgetProgressBar.swift */,
+				BB11CC22DD33EE44FF550022 /* BudgetSheetView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				54849869F5FE3B4A27816ED8 /* BudgetCalculator.swift in Sources */,
 				7D1394CD8AD94162B789C693 /* DirectionScaler.swift in Sources */,
 				5F4369C10026A0B3C66274A8 /* BudgetProgressBar.swift in Sources */,
+				BB11CC22DD33EE44FF550011 /* BudgetSheetView.swift in Sources */,
 				AA11BB22CC33DD44EE55FF66 /* AppColors.swift in Sources */,
 				C6A71ECE8A55DB6CFA4B8460 /* ConfigurationSeeder.swift in Sources */,
 				C35711B938F410351067EA1C /* ContentView.swift in Sources */,

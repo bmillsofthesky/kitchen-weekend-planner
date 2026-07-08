@@ -4,6 +4,8 @@ struct PlanOverviewView: View {
     var plan: WeekendPlan
     var movement: MovementConfiguration
 
+    @State private var showBudgetSheet = false
+
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 12) {
@@ -20,6 +22,16 @@ struct PlanOverviewView: View {
         }
         .navigationTitle(plan.name)
         .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { showBudgetSheet = true } label: {
+                    Image(systemName: "chart.bar.fill")
+                }
+            }
+        }
+        .sheet(isPresented: $showBudgetSheet) {
+            BudgetSheetView(plan: plan, movement: movement)
+        }
     }
 }
 
