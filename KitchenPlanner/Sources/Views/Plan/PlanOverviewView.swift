@@ -79,11 +79,13 @@ struct MealCardView: View {
             }
 
             Text(summaryText)
-                .font(.subheadline)
+                .font(.body)
                 .foregroundStyle(mealPlan.assignments.isEmpty && !mealPlan.isPotluck ? .tertiary : .primary)
-                .lineLimit(2)
+                .lineLimit(4)
         }
-        .padding()
+        .frame(minHeight: 100)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 20)
         .background(.background)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
