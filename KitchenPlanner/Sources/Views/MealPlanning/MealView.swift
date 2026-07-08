@@ -16,19 +16,25 @@ struct MealView: View {
     var isPotluckEligible: Bool { mealConfig?.potluckEligible ?? false }
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            RecipesTab(mealPlan: mealPlan, movement: movement, isEditing: $isEditing,
-                       isPotluckEligible: isPotluckEligible)
-                .tag(0)
-                .tabItem { Label("Recipes", systemImage: "fork.knife") }
-
-            ThemeTab(mealPlan: mealPlan)
-                .tag(1)
-                .tabItem { Label("Theme", systemImage: "paintbrush.fill") }
+        Group {
+            if selectedTab == 0 {
+                RecipesTab(mealPlan: mealPlan, movement: movement, isEditing: $isEditing,
+                           isPotluckEligible: isPotluckEligible)
+            } else {
+                ThemeTab(mealPlan: mealPlan)
+            }
         }
         .navigationTitle("Day \(mealPlan.dayNumber) · \(mealPlan.mealType)")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker("View", selection: $selectedTab) {
+                    Label("Recipes", systemImage: "fork.knife").tag(0)
+                    Label("Theme", systemImage: "paintbrush.fill").tag(1)
+                }
+                .pickerStyle(.segmented)
+                .fixedSize()
+            }
             if selectedTab == 0 {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(isEditing ? "Done" : "Edit") {
