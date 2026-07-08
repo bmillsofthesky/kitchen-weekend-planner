@@ -46,6 +46,7 @@ final class Recipe {
     var notes: String
     var isCustom: Bool
     var sourceURL: String?
+    var coverImage: String?
 
     var labels: [String] {
         get { (try? JSONDecoder().decode([String].self, from: labelsData)) ?? [] }
@@ -69,7 +70,8 @@ final class Recipe {
     init(id: String = UUID().uuidString, title: String, description: String = "",
          costForRecipe: Double? = nil, servingSize: Int = 1, type: RecipeType = .other,
          labels: [String] = [], ingredients: [Ingredient] = [], directions: [Direction] = [],
-         notes: String = "", isCustom: Bool = true, sourceURL: String? = nil) {
+         notes: String = "", isCustom: Bool = true, sourceURL: String? = nil,
+         coverImage: String? = nil) {
         self.id = id
         self.title = title
         self.recipeDescription = description
@@ -82,6 +84,7 @@ final class Recipe {
         self.notes = notes
         self.isCustom = isCustom
         self.sourceURL = sourceURL
+        self.coverImage = coverImage
     }
 
     func costLabel(headcount: Int) -> String {
@@ -110,6 +113,7 @@ struct RecipeDTO: Codable {
     var directions: [DirectionDTO]?
     var notes: String?
     var sourceURL: String?
+    var coverImage: String?
 }
 
 struct IngredientDTO: Codable {
