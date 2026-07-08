@@ -21,9 +21,5 @@ struct MainTabView: View {
             }
             .tabItem { Label("Settings", systemImage: "gearshape.fill") }
         }
-        .overlay(alignment: .top) {
-            BudgetProgressBar(plan: plan, movement: movement)
-                .frame(height: 4)
-        }
     }
 }

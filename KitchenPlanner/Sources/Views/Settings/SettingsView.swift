@@ -29,6 +29,22 @@ struct SettingsView: View {
                 LabeledContent("Headcount", value: "\(movement.headcount)")
             }
 
+            Section("Budget") {
+                BudgetProgressBar(plan: plan, movement: movement)
+                    .frame(height: 6)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 16, bottom: 4, trailing: 16))
+                let utilization = BudgetCalculator.utilization(plan: plan, movement: movement)
+                HStack {
+                    Text(budgetStatusLabel(utilization))
+                        .font(.caption)
+                        .foregroundStyle(budgetStatusColor(utilization))
+                    Spacer()
+                    Text("\(Int(utilization * 100))% used")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+
             Section("Plan Management") {
                 Button { showNewPlan = true } label: {
                     Label("New Plan", systemImage: "plus.circle")
@@ -96,6 +112,22 @@ struct SettingsView: View {
             Button("OK") {}
         } message: {
             Text(exportAlertMessage)
+        }
+    }
+
+    private func budgetStatusLabel(_ utilization: Double) -> String {
+        switch utilization {
+        case ..<0.7: return "On track"
+        case 0.7..<1.0: return "Approaching limit"
+        default: return "Over budget"
+        }
+    }
+
+    private func budgetStatusColor(_ utilization: Double) -> Color {
+        switch utilization {
+        case ..<0.7: return .green
+        case 0.7..<1.0: return .yellow
+        default: return .red
         }
     }
 
