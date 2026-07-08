@@ -16,6 +16,7 @@ struct ManualRecipeFormView: View {
     @State private var ingredients: [Ingredient] = []
     @State private var directions: [Direction] = []
     @State private var notes = ""
+    @State private var coverImageURL = ""
 
     @State private var showIngredientForm = false
     @State private var showDirectionForm = false
@@ -34,6 +35,10 @@ struct ManualRecipeFormView: View {
                     }
                     TextField("Recipe cost ($)", text: $costForRecipe)
                         .keyboardType(.decimalPad)
+                    TextField("Cover Image URL (optional)", text: $coverImageURL)
+                        .keyboardType(.URL)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
                 }
 
                 Section("Labels") {
@@ -127,9 +132,11 @@ struct ManualRecipeFormView: View {
             Direction(order: dir.order ?? i + 1, text: dir.text, section: dir.section ?? "")
         }
         notes = dto.notes ?? ""
+        coverImageURL = dto.coverImage ?? ""
     }
 
     private func save() {
+        let trimmedCoverImage = coverImageURL.trimmingCharacters(in: .whitespaces)
         let recipe = Recipe(
             title: title.trimmingCharacters(in: .whitespaces),
             description: description,
@@ -139,7 +146,8 @@ struct ManualRecipeFormView: View {
             ingredients: ingredients,
             directions: directions,
             notes: notes,
-            isCustom: true
+            isCustom: true,
+            coverImage: trimmedCoverImage.isEmpty ? nil : trimmedCoverImage
         )
         context.insert(recipe)
         try? context.save()

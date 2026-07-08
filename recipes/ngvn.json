@@ -3,6 +3,7 @@
         "id": "db58ddd5-b99b-4693-a39d-5e276e1ea0ef",
         "title": "Hashbrown Casserole",
         "description": "Saturday Breakfast",
+        "costForRecipe": 14.00,
         "servingSize": 8,
         "type": "Side",
         "labels": ["Breakfast"],
@@ -100,6 +101,7 @@
                 "text": "Bake in the preheated oven for 45-60 minutes until ready."
             }
         ],
-        "notes": "Prep time: 15 mins. Cook time: 50 mins."
+        "notes": "Prep time: 15 mins. Cook time: 50 mins.",
+        "coverImage": "https://100krecipes.com/wp-content/uploads/2020/02/HASHBROWN-CASSEROLEfirst_image__3_.jpg"
     }
 ]

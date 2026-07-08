@@ -136,6 +136,34 @@ struct RecipeSlotView: View {
     @Query private var recipes: [Recipe]
     @State private var isDropTargeted = false
 
+    @ViewBuilder
+    private func slotThumbnail(for recipe: Recipe) -> some View {
+        if let urlString = recipe.coverImage, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                if case .success(let image) = phase {
+                    image.resizable().scaledToFill()
+                } else {
+                    slotPlaceholder
+                }
+            }
+        } else {
+            slotPlaceholder
+        }
+    }
+
+    private var slotPlaceholder: some View {
+        ZStack {
+            LinearGradient(
+                colors: [Color.warmCanvas, Color(red: 0.92, green: 0.88, blue: 0.82)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            Image(systemName: "fork.knife")
+                .font(.system(size: 14))
+                .foregroundStyle(Color.earthyOrange.opacity(0.6))
+        }
+    }
+
     var slotIcon: String {
         switch slot {
         case .main: return "fork.knife"
@@ -148,17 +176,17 @@ struct RecipeSlotView: View {
         VStack(alignment: .leading, spacing: 8) {
             Label(slot.rawValue + "s", systemImage: slotIcon)
                 .font(.subheadline.bold())
-                .foregroundStyle(.secondary)
+                .foregroundStyle(Color.earthyOrange)
 
             if assignments.isEmpty {
                 Text("None assigned")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
                     .frame(maxWidth: .infinity, minHeight: 40)
-                    .background(isDropTargeted && isEditing ? .blue.opacity(0.1) : .clear)
+                    .background(isDropTargeted && isEditing ? Color.earthyOrange.opacity(0.08) : .clear)
                     .overlay(
                         RoundedRectangle(cornerRadius: 8)
-                            .stroke(isDropTargeted && isEditing ? Color.blue : Color.clear, lineWidth: 2)
+                            .stroke(isDropTargeted && isEditing ? Color.earthyOrange : Color.clear, lineWidth: 2)
                     )
             } else {
                 if isEditing {
@@ -188,12 +216,19 @@ struct RecipeSlotView: View {
                             NavigationLink {
                                 RecipeDetailView(recipe: recipe, headcount: headcount)
                             } label: {
-                                HStack {
-                                    Text(recipe.title).font(.subheadline)
+                                HStack(spacing: 10) {
+                                    slotThumbnail(for: recipe)
+                                        .frame(width: 40, height: 40)
+                                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                                    Text(recipe.title)
+                                        .font(.subheadline)
+                                        .lineLimit(2)
                                     Spacer()
                                     Text(recipe.costLabel(headcount: headcount))
-                                        .font(.caption).foregroundStyle(.secondary)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
                                 }
+                                .padding(.vertical, 2)
                             }
                         }
                     }
@@ -201,9 +236,9 @@ struct RecipeSlotView: View {
             }
         }
         .padding()
-        .background(.background)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.05), radius: 3, y: 1)
+        .background(Color.warmCanvas)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
         .dropDestination(for: String.self) { ids, _ in
             guard isEditing, let id = ids.first,
                   let recipe = recipes.first(where: { $0.id == id }) else { return false }

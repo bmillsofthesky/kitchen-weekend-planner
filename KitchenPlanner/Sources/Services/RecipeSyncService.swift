@@ -54,7 +54,8 @@ final class RecipeSyncService {
             directions: directions,
             notes: dto.notes ?? "",
             isCustom: isCustom,
-            sourceURL: dto.sourceURL
+            sourceURL: dto.sourceURL,
+            coverImage: dto.coverImage
         )
     }
 
@@ -77,5 +78,6 @@ final class RecipeSyncService {
                 Direction(order: dir.order ?? i, text: dir.text, section: dir.section ?? "")
             }
         }
+        recipe.coverImage = dto.coverImage ?? recipe.coverImage
     }
 }
