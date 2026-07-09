@@ -11,6 +11,7 @@ struct SettingsView: View {
     @Query private var allMovements: [MovementConfiguration]
 
     @State private var showBudgetSheet = false
+    @State private var showDeleteConfirmation = false
     @State private var showNewPlan = false
     @State private var showLoadPlan = false
     @State private var showImportPlan = false
@@ -54,6 +55,21 @@ struct SettingsView: View {
                 }
                 .disabled(isExporting)
             }
+
+            Section("Danger Zone") {
+                Button(role: .destructive) {
+                    showDeleteConfirmation = true
+                } label: {
+                    Label("Delete Plan", systemImage: "trash")
+                        .foregroundStyle(.red)
+                }
+            }
+        }
+        .alert("Delete \(plan.name)?", isPresented: $showDeleteConfirmation) {
+            Button("Delete permanently", role: .destructive) { deletePlan() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This will permanently delete the plan and all its meal assignments. This cannot be undone.")
         }
         .navigationTitle("Settings")
         .toolbar {
@@ -108,6 +124,11 @@ struct SettingsView: View {
         } message: {
             Text(exportAlertMessage)
         }
+    }
+
+    private func deletePlan() {
+        context.delete(plan)
+        try? context.save()
     }
 
     private func exportPlan() async {
