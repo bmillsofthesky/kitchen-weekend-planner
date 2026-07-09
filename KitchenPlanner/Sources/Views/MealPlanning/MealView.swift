@@ -14,12 +14,14 @@ struct MealView: View {
     }
 
     var isPotluckEligible: Bool { mealConfig?.potluckEligible ?? false }
+    var isPotluckRequired: Bool { mealConfig?.potluckRequired ?? false }
 
     var body: some View {
         Group {
             if selectedTab == 0 {
                 RecipesTab(mealPlan: mealPlan, movement: movement, isEditing: $isEditing,
-                           isPotluckEligible: isPotluckEligible)
+                           isPotluckEligible: isPotluckEligible,
+                           isPotluckRequired: isPotluckRequired)
             } else {
                 ThemeTab(mealPlan: mealPlan)
             }
@@ -53,6 +55,7 @@ struct RecipesTab: View {
     var movement: MovementConfiguration
     @Binding var isEditing: Bool
     var isPotluckEligible: Bool
+    var isPotluckRequired: Bool = false
     @Environment(\.modelContext) private var context
     @Query(sort: \Recipe.title) private var allRecipes: [Recipe]
 
@@ -61,7 +64,7 @@ struct RecipesTab: View {
             // Meal slot columns
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    if isPotluckEligible {
+                    if isPotluckEligible && !isPotluckRequired {
                         Toggle("Potluck Meal", isOn: Binding(
                             get: { mealPlan.isPotluck },
                             set: { mealPlan.isPotluck = $0; try? context.save() }
@@ -84,6 +87,12 @@ struct RecipesTab: View {
                 .padding()
             }
             .frame(maxWidth: .infinity)
+            .onAppear {
+                if isPotluckRequired && !mealPlan.isPotluck {
+                    mealPlan.isPotluck = true
+                    try? context.save()
+                }
+            }
 
             if isEditing {
                 Divider()

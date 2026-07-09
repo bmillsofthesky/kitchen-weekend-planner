@@ -87,6 +87,7 @@ struct NewPlanFormView: View {
         // Pre-create MealPlan entries for each slot in the movement
         for slot in movement.allMealSlots {
             let mp = MealPlan(dayNumber: slot.day, mealType: slot.meal.mealType, weekendPlan: plan)
+            mp.isPotluck = slot.meal.potluckRequired
             context.insert(mp)
             plan.mealPlans.append(mp)
         }

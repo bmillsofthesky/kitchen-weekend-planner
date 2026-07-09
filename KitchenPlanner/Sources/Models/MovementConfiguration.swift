@@ -8,9 +8,23 @@ struct DayConfig: Codable, Hashable {
     var meals: [MealConfig]
 }
 
-struct MealConfig: Codable, Hashable {
+struct MealConfig: Hashable {
     var mealType: MealType
     var potluckEligible: Bool
+    var potluckRequired: Bool = false
+}
+
+extension MealConfig: Codable {
+    enum CodingKeys: String, CodingKey {
+        case mealType, potluckEligible, potluckRequired
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        mealType = try c.decode(MealType.self, forKey: .mealType)
+        potluckEligible = try c.decode(Bool.self, forKey: .potluckEligible)
+        potluckRequired = (try? c.decode(Bool.self, forKey: .potluckRequired)) ?? false
+    }
 }
 
 enum MealType: String, Codable, CaseIterable {

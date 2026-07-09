@@ -11,7 +11,7 @@
       {
         "dayNumber": 1,
         "meals": [
-          { "mealType": "Dinner", "potluckEligible": true }
+          { "mealType": "Dinner", "potluckEligible": true, "potluckRequired": true }
         ]
       },
       {

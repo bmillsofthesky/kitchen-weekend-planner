@@ -34,6 +34,7 @@
 		D1B020D03CBD8E0B85488814 /* PlanOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99E8AF7FC6BCB0CEA63698F /* PlanOverviewView.swift */; };
 		DA7E481F33F20B32EA419005 /* RecipeURLImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB7B6013FBD1555CE2649AD /* RecipeURLImportView.swift */; };
 		E129144F7FF49184979579A5 /* ManualRecipeFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0C6EDF8CDFA9CEE998BCF7 /* ManualRecipeFormView.swift */; };
+		CC11DD22EE33FF44AA550022 /* PotluckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11DD22EE33FF44AA550011 /* PotluckView.swift */; };
 		E3E95497B2725A0AC33F0896 /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5FD238D9DFCDEACE16EF27 /* MealView.swift */; };
 		F35BDC69B03E9FAA4A9E98D3 /* StartupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44408F55FA51D754F394C4C6 /* StartupView.swift */; };
 		F4B3653DC87AE85D8E29A7AD /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A35475A6B7F842D2DFB57E /* MainTabView.swift */; };
@@ -59,6 +60,7 @@
 		55678C87C25DB710B4339B67 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		586CE15808BC85505D6DCD97 /* BudgetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetCalculator.swift; sourceTree = "<group>"; };
 		5B5FD238D9DFCDEACE16EF27 /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
+		CC11DD22EE33FF44AA550011 /* PotluckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PotluckView.swift; sourceTree = "<group>"; };
 		6B09B3AE99004639BF0785F3 /* DirectionScaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionScaler.swift; sourceTree = "<group>"; };
 		7BE4B5AA814A4219A7F363B9 /* KitchenPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenPlannerApp.swift; sourceTree = "<group>"; };
 		7CF4064D317C1BAA97B0C769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5B5FD238D9DFCDEACE16EF27 /* MealView.swift */,
+				CC11DD22EE33FF44AA550011 /* PotluckView.swift */,
 				3E0A0D670560330EC977D225 /* ThemeTab.swift */,
 			);
 			path = MealPlanning;
@@ -279,6 +282,7 @@
 				28B04C2F58D31FF627C80509 /* LoadPlanView.swift in Sources */,
 				F4B3653DC87AE85D8E29A7AD /* MainTabView.swift in Sources */,
 				E129144F7FF49184979579A5 /* ManualRecipeFormView.swift in Sources */,
+				CC11DD22EE33FF44AA550022 /* PotluckView.swift in Sources */,
 				E3E95497B2725A0AC33F0896 /* MealView.swift in Sources */,
 				B36E668B389CC89D7B6C1F38 /* MovementConfiguration.swift in Sources */,
 				80065F14C90E3D6F98407710 /* NewPlanFormView.swift in Sources */,
