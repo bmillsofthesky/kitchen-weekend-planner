@@ -20,6 +20,11 @@ struct ContentView: View {
         }
         .onAppear { loadActivePlan() }
         .onChange(of: plans) { _, _ in loadActivePlan() }
+        .onChange(of: activePlan) { oldPlan, newPlan in
+            guard oldPlan == nil, let plan = newPlan,
+                  let movement = movements.first(where: { $0.id == plan.movementId }) else { return }
+            Task { try? await RecipeSyncService.sync(movement: movement, context: context) }
+        }
     }
 
     private func loadActivePlan() {
