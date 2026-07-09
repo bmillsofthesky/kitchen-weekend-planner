@@ -11,7 +11,11 @@ struct PlanOverviewView: View {
             LazyVStack(spacing: 12) {
                 ForEach(plan.sortedMealPlans) { mealPlan in
                     NavigationLink {
-                        MealView(mealPlan: mealPlan, movement: movement)
+                        if mealPlan.isPotluck {
+                            PotluckView(mealPlan: mealPlan)
+                        } else {
+                            MealView(mealPlan: mealPlan, movement: movement)
+                        }
                     } label: {
                         MealCardView(mealPlan: mealPlan, movement: movement)
                     }

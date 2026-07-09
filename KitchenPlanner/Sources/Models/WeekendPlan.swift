@@ -28,6 +28,7 @@ final class MealPlan {
     var dayNumber: Int
     var mealType: String       // MealType.rawValue
     var isPotluck: Bool
+    var potluckUrl: String?
     @Relationship(deleteRule: .cascade) var assignments: [RecipeAssignment]
     @Relationship(deleteRule: .cascade) var theme: Theme?
     var weekendPlan: WeekendPlan?
